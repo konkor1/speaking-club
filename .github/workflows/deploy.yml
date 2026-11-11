@@ -32,6 +32,7 @@ jobs:
           cp favicon.ico favicon.svg apple-touch-icon.png .nojekyll _site/
           if [ -f 404.html ]; then cp 404.html _site/; fi
           if [ -f robots.txt ]; then cp robots.txt _site/; fi
+          if [ -f sitemap.xml ]; then cp sitemap.xml _site/; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
