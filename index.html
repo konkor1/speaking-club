@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Security -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+
+  <title>Speaking Club з Ольгою Воропай | Розмовний клуб англійської мови</title>
+  <meta name="description" content="Презентація та запис на онлайн-зустрічі розмовного клубу англійської мови з Ольгою Воропай. Почніть вільно говорити англійською без страху помилок." />
+  
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/opensans-normal-cyrillic.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <!-- Tailwind CSS v4 (self-hosted, pinned) -->
+  <script src="vendor/tailwindcss-browser-4.3.5.js" defer></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body class="antialiased">
+
+  <!-- =========================================================================
+       STICKY NAVBAR
+       ========================================================================= -->
+  <nav 
+    aria-label="Головна навігація сайту"
+    class="fixed top-0 left-0 right-0 w-full border-b shadow-xs transition-colors bg-surface z-[9999]"
+    style="border-color: var(--color-border);"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16">
+        <!-- Brand Logo -->
+        <a
+          href="#"
+          class="flex items-center gap-2 font-bold text-base sm:text-lg tracking-tight hover:opacity-90 transition-opacity cursor-pointer"
+          style="color: var(--color-text-main);"
+        >
+          <span 
+            class="w-7 h-7 rounded-lg flex items-center justify-center text-on-primary font-black text-xs shadow-xs"
+            style="background-color: var(--color-primary);"
+          >
+            OV
+          </span>
+          <span class="hidden sm:inline">Speaking Club</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center justify-center gap-1 xl:gap-2">
+          <a href="#teacher" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Про викладача</a>
+          <a href="#topics" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Про що говоримо</a>
+          <a href="#audience" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Кому підходить клуб</a>
+          <a href="#pricing" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Вартість</a>
+          <a href="#reviews" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Відгуки</a>
+          <a href="#faq" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Відповіді на питання</a>
+          <a href="#contacts" class="px-2.5 xl:px-3 py-1.5 rounded-lg text-sm font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Контакти</a>
+        </div>
+
+        <!-- Right Action Button -->
+        <div class="hidden sm:flex items-center gap-2">
+          <a
+            href="#contacts"
+            class="join-trigger flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs sm:text-sm font-semibold text-on-primary shadow-xs hover:opacity-95 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            style="background-color: var(--color-primary);"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Приєднатися</span>
+          </a>
+        </div>
+
+        <!-- Mobile & Tablet Menu Button -->
+        <div class="flex lg:hidden items-center gap-2">
+          <a
+            href="#contacts"
+            class="join-trigger sm:hidden flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-on-primary shadow-xs"
+            style="background-color: var(--color-primary);"
+          >
+            <span>Дірект</span>
+          </a>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="p-2 rounded-xl text-icon-muted hover-overlay transition-colors cursor-pointer"
+            aria-label="Відкрити меню"
+          >
+            <i data-lucide="menu" class="w-6 h-6" style="color: var(--color-text-main);"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t bg-surface px-4 pt-3 pb-6 shadow-xl" style="border-color: var(--color-border);">
+      <div class="flex items-center justify-between mb-4">
+        <span class="font-bold text-sm uppercase tracking-wider" style="color: var(--color-primary);">Меню сайту</span>
+        <button id="mobile-menu-close" class="p-1 rounded-lg hover-overlay cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <a href="#teacher" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Про викладача</a>
+        <a href="#topics" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Про що говоримо</a>
+        <a href="#audience" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Кому підходить клуб</a>
+        <a href="#pricing" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Вартість</a>
+        <a href="#reviews" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Відгуки</a>
+        <a href="#faq" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Відповіді на питання</a>
+        <a href="#contacts" class="px-3 py-2.5 rounded-xl text-base font-medium transition-colors hover-overlay" style="color: var(--color-text-main);">Контакти</a>
+        <div class="pt-3 mt-2 border-t" style="border-color: var(--color-border);">
+          <a
+            href="https://t.me/Olga_Boxy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-on-primary shadow-md text-center"
+            style="background-color: var(--color-primary);"
+          >
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Написати у Telegram (@Olga_Boxy)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       HEADER / HERO SECTION
+       ========================================================================= -->
+  <header class="relative pt-24 sm:pt-28 pb-12 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div 
+      class="absolute top-10 left-1/2 -translate-x-1/2 w-80 sm:w-[32rem] h-80 sm:h-[32rem] rounded-full blur-3xl opacity-20 pointer-events-none"
+      style="background-color: var(--color-secondary);"
+    ></div>
+    <div 
+      class="absolute top-36 right-10 w-64 h-64 rounded-full blur-3xl opacity-15 pointer-events-none"
+      style="background-color: var(--color-primary);"
+    ></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <!-- Left Column -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-primary-soft); color: var(--color-primary);"
+          >
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Жива розмовна практика англійської</span>
+          </div>
+
+          <h1 
+            class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-snug"
+            style="color: var(--color-text-main);"
+          >
+            Speaking Club, на якому ти вчишся говорити англійською
+            <span style="color: var(--color-primary);">вільно і впевнено!</span>
+          </h1>
+
+          <div class="space-y-3 pt-1">
+            <div 
+              class="p-5 rounded-2xl border text-left space-y-3 backdrop-blur-md shadow-warm-sm"
+              style="background-color: var(--color-surface); border-color: var(--color-border);"
+            >
+              <div class="flex items-start gap-3">
+                <span class="text-xl shrink-0">🤔</span>
+                <p class="text-base sm:text-lg font-normal leading-relaxed" style="color: var(--color-text-main);">
+                  Ти багато розумієш англійською, але коли треба відповісти — довго підбираєш слова або обмежуєшся «Yes»?
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3 pt-3 border-t" style="border-color: var(--color-border);">
+                <span class="text-xl shrink-0">💡</span>
+                <p class="text-base sm:text-lg font-semibold leading-relaxed" style="color: var(--color-primary);">
+                  У клубі тренуємося швидше формулювати власні думки і підтримувати діалог. Використовуємо слова й конструкції, які ти вже знаєш, у живій розмові.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button
+              type="button"
+              class="join-trigger w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-base sm:text-lg text-on-primary shadow-warm-md flex items-center justify-center gap-2.5 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+              style="background-color: var(--color-primary);"
+            >
+              <span>Приєднатися зараз</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+
+            <a
+              href="#pricing"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl font-medium text-base border transition-all duration-300 hover-bg-surface text-center shadow-xs"
+              style="border-color: var(--color-border); background-color: var(--color-surface-glass-strong); color: var(--color-text-main);"
+            >
+              Вартість та формати
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Atmosphere -->
+        <div class="lg:col-span-5 relative">
+          <div 
+            class="rounded-3xl p-6 sm:p-8 shadow-warm-md border relative overflow-hidden backdrop-blur-sm"
+            style="background-color: var(--color-surface); border-color: var(--color-border);"
+          >
+            <div 
+              class="w-14 h-14 rounded-2xl flex items-center justify-center text-on-primary mb-5 shadow-xs border border-on-primary"
+              style="background-color: var(--color-primary);"
+            >
+              <i data-lucide="heart-handshake" class="w-8 h-8 stroke-[2]"></i>
+            </div>
+
+            <h3 
+              class="text-2xl sm:text-3xl font-bold tracking-tight mb-3"
+              style="color: var(--color-text-main);"
+            >
+              Атмосфера, у якій нема страху говорити.
+            </h3>
+
+            <p 
+              class="text-base sm:text-lg font-normal leading-relaxed pt-1"
+              style="color: var(--color-text-muted);"
+            >
+              Три головні принципи клубу: доброзичливість, повага й можливість висловитися для кожного.
+            </p>
+
+            <div 
+              class="mt-6 pt-5 border-t flex items-center justify-between text-sm"
+              style="border-color: var(--color-border);"
+            >
+              <div class="flex items-center gap-2 font-medium" style="color: var(--color-text-main);">
+                <span class="w-2.5 h-2.5 rounded-full bg-success-dot"></span>
+                <span>Комфортна група до 6 людей</span>
+              </div>
+              <span 
+                class="text-xs font-semibold px-2.5 py-1 rounded-full text-on-primary"
+                style="background-color: var(--color-secondary);"
+              >
+                Рівень B1
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+  <main class="flex-1 space-y-0">
+
+    <!-- =========================================================================
+         БЛОК 1: Про викладача (id="teacher")
+         ========================================================================= -->
+    <section 
+      id="teacher" 
+      class="py-14 sm:py-20 scroll-mt-14 transition-colors"
+      style="background-color: var(--color-surface-glass);"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-secondary-soft); color: var(--color-secondary);"
+          >
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Знайомство</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Про викладача
+          </h2>
+          <p class="text-base sm:text-lg font-normal" style="color: var(--color-text-muted);">
+            Я створила цей клуб, щоб ви більше ніколи не мовчали, коли хочете говорити!
+          </p>
+        </div>
+
+        <!-- Main Wrapper Card -->
+        <div 
+          class="p-6 sm:p-10 rounded-3xl border shadow-warm-md bg-surface grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          style="border-color: var(--color-border);"
+        >
+          <!-- Left Column: Photo & Name -->
+          <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="relative w-full max-w-sm mb-4">
+              <div 
+                class="absolute -inset-2 rounded-3xl blur-xl opacity-20"
+                style="background-color: var(--color-primary);"
+              ></div>
+              <div 
+                class="relative rounded-3xl p-3 border shadow-warm-sm bg-surface overflow-hidden"
+                style="border-color: var(--color-border);"
+              >
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="assets/images/olga-480.avif 480w, assets/images/olga-768.avif 768w, assets/images/olga-960.avif 960w"
+                    sizes="(max-width: 430px) 100vw, 384px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="assets/images/olga-480.webp 480w, assets/images/olga-768.webp 768w, assets/images/olga-960.webp 960w"
+                    sizes="(max-width: 430px) 100vw, 384px"
+                  />
+                  <img
+                    src="assets/images/olga-960.jpg"
+                    width="960"
+                    height="1200"
+                    alt="Ольга Воропай - викладачка англійської"
+                    class="w-full h-auto rounded-2xl object-cover aspect-[4/5]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+            </div>
+            <div class="text-center space-y-1">
+              <h3 class="text-2xl font-bold" style="color: var(--color-text-main);">Ольга Воропай</h3>
+              <p class="text-sm font-semibold" style="color: var(--color-primary);">Викладачка та засновниця Speaking Club</p>
+            </div>
+          </div>
+
+          <!-- Right Column: 3 Cards + CTA Button -->
+          <div class="lg:col-span-7 space-y-4">
+            <!-- Card 1 -->
+            <div 
+              class="p-5 sm:p-6 rounded-2xl border flex items-start gap-4 transition-all hover:shadow-warm-sm"
+              style="background-color: var(--color-bg-start); border-color: var(--color-border);"
+            >
+              <div 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-on-primary shrink-0 mt-0.5 shadow-xs"
+                style="background-color: var(--color-primary);"
+              >
+                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+              </div>
+              <p class="text-base sm:text-lg font-normal leading-relaxed" style="color: var(--color-text-main);">
+                Вітаю! Я Ольга Воропай, викладачка англійської мови для дорослих. Маю понад 10 років досвіду викладання та сертифікат TESOL.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div 
+              class="p-5 sm:p-6 rounded-2xl border flex items-start gap-4 transition-all hover:shadow-warm-sm"
+              style="background-color: var(--color-bg-start); border-color: var(--color-border);"
+            >
+              <div 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-on-primary shrink-0 mt-0.5 shadow-xs"
+                style="background-color: var(--color-primary);"
+              >
+                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+              </div>
+              <p class="text-base sm:text-lg font-normal leading-relaxed" style="color: var(--color-text-main);">
+                Люблю працювати з дорослими, тому що кожен має свій власний досвід, навички та погляди. Цим цікаво ділитися й обговорювати.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div 
+              class="p-5 sm:p-6 rounded-2xl border flex items-start gap-4 transition-all hover:shadow-warm-sm"
+              style="background-color: var(--color-bg-start); border-color: var(--color-border);"
+            >
+              <div 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-on-primary shrink-0 mt-0.5 shadow-xs"
+                style="background-color: var(--color-primary);"
+              >
+                <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+              </div>
+              <p class="text-base sm:text-lg font-normal leading-relaxed" style="color: var(--color-text-main);">
+                На зустрічах я готую тему та матеріали, даю короткі інструкції й організовую обговорення.
+              </p>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="pt-3">
+              <button
+                type="button"
+                class="join-trigger w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-base text-on-primary shadow-warm-md flex items-center justify-center gap-2.5 cursor-pointer transition-all hover:scale-[1.02]"
+                style="background-color: var(--color-primary);"
+              >
+                <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                <span>Приєднатися до клубу з Ольгою</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Підблок "Чому варто доєднатися" -->
+        <div class="mt-16 sm:mt-20">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <h3 class="text-2xl sm:text-3xl font-bold" style="color: var(--color-text-main);">
+              Чому варто доєднатися і вибрати <span style="color: var(--color-primary);">Розмовний клуб зі мною</span>
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">1</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Дружня і підтримуюча атмосфера</p>
+            </div>
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">2</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Актуальні теми для дорослих зайнятих людей</p>
+            </div>
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">3</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Приділяю увагу кожному, допомагаю сформулювати думку</p>
+            </div>
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">4</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Даємо кожному можливість висловитися, не мовчати, а спілкуватися з однодумцями</p>
+            </div>
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">5</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Щоб звикати до різних співрозмовників, як у реальному житті</p>
+            </div>
+            <div class="p-6 rounded-2xl border shadow-warm-sm flex items-start gap-4" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-on-primary font-bold shrink-0 text-sm" style="background-color: var(--color-primary);">6</span>
+              <p class="text-base font-medium" style="color: var(--color-text-main);">Щоб швидше виражати свої думки і впевненіше говорити</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 2: Про що говоримо (id="topics")
+         ========================================================================= -->
+    <section 
+      id="topics" 
+      class="py-14 sm:py-20 bg-transparent scroll-mt-14 transition-colors"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-primary-soft); color: var(--color-primary);"
+          >
+            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+            <span>Дискусії та теми</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Про що говоримо:
+          </h2>
+          <p class="mt-2 text-base sm:text-lg" style="color: var(--color-text-muted);">
+            Обираємо теми, релевантні і цікаві учасникам.
+          </p>
+        </div>
+
+        <!-- Themes Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-primary);">
+              <i data-lucide="briefcase" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Робота</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Робочі ситуації, проекти, мітинги, кар’єрний розвиток</p>
+          </div>
+
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-secondary);">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Відносини з колегами</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Взаємодія в команді, довіра, ділове спілкування</p>
+          </div>
+
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-primary);">
+              <i data-lucide="plane" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Подорожі</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Пригоди, аеропорти, культурні особливості та лайфхаки</p>
+          </div>
+
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-secondary);">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Звички</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Корисні рутини, продуктивність та щоденний ритм</p>
+          </div>
+
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-primary);">
+              <i data-lucide="utensils" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Їжа</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Гастрономічні вподобання, традиції та улюблені страви</p>
+          </div>
+
+          <div class="p-6 sm:p-7 rounded-3xl border shadow-warm-sm bg-surface space-y-3 text-center flex flex-col items-center" style="border-color: var(--color-border);">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary mx-auto" style="background-color: var(--color-secondary);">
+              <i data-lucide="scale" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--color-text-main);">Work-life balance</h3>
+            <p class="text-base" style="color: var(--color-text-muted);">Баланс між роботою, відпочинком та власними хобі</p>
+          </div>
+        </div>
+
+        <div class="max-w-xl mx-auto mt-8">
+          <div class="p-4 sm:p-5 rounded-2xl border shadow-warm-sm bg-surface flex items-center justify-center gap-3 text-center" style="border-color: var(--color-border);">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center text-on-primary shrink-0" style="background-color: var(--color-primary);">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+            </div>
+            <p class="text-base sm:text-lg font-semibold flex items-center justify-center gap-1.5" style="color: var(--color-text-main);">
+              <span>Розширюємо наш світогляд, дізнаємось щось нове</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Підблок: Які труднощі допомагає вирішувати клуб -->
+        <div class="mt-16 sm:mt-20">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <h3 class="text-2xl sm:text-3xl font-bold" style="color: var(--color-text-main);">
+              Які труднощі допомагає вирішувати клуб:
+            </h3>
+          </div>
+
+          <div class="max-w-3xl mx-auto space-y-4">
+            <div class="p-5 rounded-2xl border bg-surface shadow-warm-sm flex items-start gap-4" style="border-color: var(--color-border);">
+              <span class="text-xl">⚠️</span>
+              <p class="text-base sm:text-lg font-medium" style="color: var(--color-text-main);">«Розумію питання, але не можу швидко придумати, що сказати».</p>
+            </div>
+            <div class="p-5 rounded-2xl border bg-surface shadow-warm-sm flex items-start gap-4" style="border-color: var(--color-border);">
+              <span class="text-xl">⚠️</span>
+              <p class="text-base sm:text-lg font-medium" style="color: var(--color-text-main);">«Боюся помилитися й виглядати смішно».</p>
+            </div>
+            <div class="p-5 rounded-2xl border bg-surface shadow-warm-sm flex items-start gap-4" style="border-color: var(--color-border);">
+              <span class="text-xl">⚠️</span>
+              <p class="text-base sm:text-lg font-medium" style="color: var(--color-text-main);">«Знаю слова, але в розмові не можу їх згадати».</p>
+            </div>
+            <div class="p-5 rounded-2xl border bg-surface shadow-warm-sm flex items-start gap-4" style="border-color: var(--color-border);">
+              <span class="text-xl">⚠️</span>
+              <p class="text-base sm:text-lg font-medium" style="color: var(--color-text-main);">«Мені нема з ким говорити англійською, і тому відчуваю, що все забуваю».</p>
+            </div>
+            <div class="p-5 rounded-2xl border bg-surface shadow-warm-sm flex items-start gap-4" style="border-color: var(--color-border);">
+              <span class="text-xl">⚠️</span>
+              <p class="text-base sm:text-lg font-medium" style="color: var(--color-text-main);">«На роботі хочеться сказати більше, ніж Yes або No».</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 3: Кому підходить клуб (id="audience")
+         ========================================================================= -->
+    <section 
+      id="audience" 
+      class="py-14 sm:py-20 scroll-mt-14 transition-colors shadow-xs"
+      style="background-color: var(--color-surface-glass);"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-secondary-soft); color: var(--color-secondary);"
+          >
+            <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            <span>Для кого створено</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Кому підходить наш Speaking Club
+          </h2>
+          <p class="mt-2 text-base font-normal" style="color: var(--color-text-muted);">
+            Ми цінуємо ваш час і чесно говоримо, кому клуб принесе колосальний результат, а кому краще обрати інший формат.
+          </p>
+        </div>
+
+        <!-- Audience Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <!-- Suitable -->
+          <div class="p-8 rounded-3xl border shadow-warm-md bg-surface space-y-4" style="border-color: var(--color-border);">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-success-soft text-success flex items-center justify-center font-bold text-xl shrink-0">✓</div>
+              <h3 class="text-2xl font-bold" style="color: var(--color-text-main);">Тобі підійде клуб:</h3>
+            </div>
+            <p class="text-base sm:text-lg leading-relaxed" style="color: var(--color-text-muted);">
+              Якщо ти маєш рівень B1, можеш висловити просту думку англійською й хочеш більше живої практики, тобі знайомі базові граматичні конструкції та маєш достатній запас слів.
+            </p>
+          </div>
+
+          <!-- Not Suitable -->
+          <div class="p-8 rounded-3xl border shadow-warm-md bg-surface space-y-4" style="border-color: var(--color-border);">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-danger-soft text-danger flex items-center justify-center font-bold text-xl shrink-0">✕</div>
+              <h3 class="text-2xl font-bold" style="color: var(--color-text-main);">Тобі не підійде цей клуб:</h3>
+            </div>
+            <ul class="space-y-3 text-base sm:text-lg" style="color: var(--color-text-muted);">
+              <li class="flex items-start gap-2.5">
+                <span class="text-danger-accent font-bold">•</span>
+                <span>Якщо починаєш із нуля або маєш рівень A1–A2.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-danger-accent font-bold">•</span>
+                <span>Якщо потрібні базові знання з граматикою, розвитком усіх мовних навичок й домашніми завданнями.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-danger-accent font-bold">•</span>
+                <span>Якщо готуєшся до конкретної співбесіди, конференції або виступу.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Підблок: Ти можеш думати -->
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl sm:text-3xl font-bold" style="color: var(--color-text-main);">
+              Ти можеш думати:
+            </h3>
+          </div>
+
+          <div class="space-y-6">
+            <div class="p-6 rounded-2xl border bg-surface shadow-warm-sm space-y-2" style="border-color: var(--color-border);">
+              <p class="text-lg font-bold" style="color: var(--color-primary);">«Мені спочатку треба ще підтягнути англійську».</p>
+              <p class="text-base" style="color: var(--color-text-muted);">Якщо база B1 вже є, можна практикуватися з тим, що знаєш зараз. Якщо сумніваєшся в рівні — я тебе протестую перед першою зустріччю.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl border bg-surface shadow-warm-sm space-y-2" style="border-color: var(--color-border);">
+              <p class="text-lg font-bold" style="color: var(--color-primary);">«Я буду мовчати. Мені соромно».</p>
+              <p class="text-base" style="color: var(--color-text-muted);">Я збираю групу людей з однаковим рівнем знань, тому взаємопідтримка і дружня атмосфера допоможе комфортно почати спілкування.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl border bg-surface shadow-warm-sm space-y-2" style="border-color: var(--color-border);">
+              <p class="text-lg font-bold" style="color: var(--color-primary);">«У мене немає часу».</p>
+              <p class="text-base" style="color: var(--color-text-muted);">90 хвилин раз на тиждень — це мінімум, завдяки якому ти покращиш свій Speaking, коли англійська знадобиться для роботи, подорожі чи переїзду.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl border bg-surface shadow-warm-sm space-y-2" style="border-color: var(--color-border);">
+              <p class="text-lg font-bold" style="color: var(--color-primary);">«Я можу займатися самостійно».</p>
+              <p class="text-base" style="color: var(--color-text-muted);">Так, читання, відео й граматичні вправи безумовно дають користь. Але клуб дає можливість прокачати саме ваші розмовні навички, живий діалог з різними людьми.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl border bg-surface shadow-warm-sm space-y-2" style="border-color: var(--color-border);">
+              <p class="text-lg font-bold" style="color: var(--color-primary);">«А раптом мені не підійде?»</p>
+              <p class="text-base" style="color: var(--color-text-muted);">Почни з однієї зустрічі. Познайомишся з атмосферою й зрозумієш, чи комфортно тобі в групі.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 4: Вартість участі (id="pricing")
+         ========================================================================= -->
+    <section 
+      id="pricing" 
+      class="py-14 sm:py-20 bg-transparent scroll-mt-14 transition-colors"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-primary-soft); color: var(--color-primary);"
+          >
+            <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+            <span>Інвестиції в розвиток</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Вартість участі
+          </h2>
+          <p class="mt-2 text-base sm:text-lg" style="color: var(--color-text-muted);">
+            Оберіть зручний формат занять для вашого графіку.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Card 1 -->
+          <div class="p-8 rounded-3xl border shadow-warm-md bg-surface flex flex-col justify-between space-y-6 relative" style="border-color: var(--color-border);">
+            <div class="space-y-4">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold text-on-primary" style="background-color: var(--color-secondary);">
+                Для старту
+              </span>
+              <h3 class="text-2xl font-bold" style="color: var(--color-text-main);">Разове відвідування</h3>
+              <div class="text-4xl font-extrabold" style="color: var(--color-primary);">300 грн</div>
+              <p class="text-base" style="color: var(--color-text-muted);">
+                Одна зустріч на 90 хвилин. Підійде, щоб познайомитися з форматом або приєднуватися тоді, коли маєш можливість.
+              </p>
+              <div class="text-sm font-medium pt-2" style="color: var(--color-text-main);">
+                ⏱️ Тривалість: 90 хвилин
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="join-trigger w-full py-3.5 rounded-xl font-semibold text-on-primary shadow-sm cursor-pointer"
+              style="background-color: var(--color-primary);"
+            >
+              Записатися
+            </button>
+          </div>
+
+          <!-- Card 2 (Popular) -->
+          <div class="p-8 rounded-3xl border-2 shadow-warm-lg bg-surface flex flex-col justify-between space-y-6 relative" style="border-color: var(--color-primary);">
+            <div class="absolute -top-4 right-8 px-4 py-1 rounded-full text-xs font-bold text-on-primary shadow-md" style="background-color: var(--color-primary);">
+              Найкращий вибір
+            </div>
+
+            <div class="space-y-4">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold text-on-primary" style="background-color: var(--color-primary);">
+                Абонемент
+              </span>
+              <h3 class="text-2xl font-bold" style="color: var(--color-text-main);">Пакет із чотирьох зустрічей</h3>
+              <div class="text-4xl font-extrabold" style="color: var(--color-primary);">1200 грн</div>
+              <p class="text-base" style="color: var(--color-text-muted);">
+                Чотири зустрічі по 90 хвилин. Для тих, хто планує практикуватися щотижня.
+              </p>
+              <div class="text-sm font-medium pt-2" style="color: var(--color-text-main);">
+                ⏱️ Тривалість: 4 x 90 хвилин
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="join-trigger w-full py-3.5 rounded-xl font-semibold text-on-primary shadow-sm cursor-pointer"
+              style="background-color: var(--color-primary);"
+            >
+              Обрати пакет
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 5: Відгуки (id="reviews")
+         ========================================================================= -->
+    <section 
+      id="reviews" 
+      class="py-14 sm:py-20 scroll-mt-14 transition-colors shadow-xs"
+      style="background-color: var(--color-surface-glass);"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-secondary-soft); color: var(--color-secondary);"
+          >
+            <i data-lucide="star" class="w-3.5 h-3.5"></i>
+            <span>Враження учасників</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Відгуки учасників клубу
+          </h2>
+          <p class="mt-2 text-base sm:text-lg" style="color: var(--color-text-muted);">
+            Що кажуть люди про наші зустрічі та результати.
+          </p>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="max-w-3xl mx-auto p-6 sm:p-10 rounded-3xl border shadow-warm-md relative" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+          
+          <!-- Top Row: Name + Quote Icon -->
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 id="review-author" class="text-xl sm:text-2xl font-bold" style="color: var(--color-text-main);">Яна</h3>
+              <p id="review-role" class="text-xs sm:text-sm font-medium" style="color: var(--color-secondary);">Учасниця клубу</p>
+            </div>
+            <div class="text-4xl sm:text-5xl font-black leading-none select-none opacity-20" style="color: var(--color-primary);">
+              “
+            </div>
+          </div>
+
+          <!-- Review Text -->
+          <div class="min-h-[140px] sm:min-h-[120px] flex items-center">
+            <p id="review-text" class="text-base sm:text-lg italic leading-relaxed" style="color: var(--color-text-main);">
+              «Зустрічі досить класні, все проходить швидко і ненапружено. Що сподобалося найбільше - жива атмосфера, підтримка в групі, прикольні інтерактиви та завдання, які реально включають в процес.»
+            </p>
+          </div>
+
+          <hr class="my-6 border-t" style="border-color: var(--color-border);">
+
+          <!-- Bottom Row: Dots + Controls -->
+          <div class="flex items-center justify-between gap-4">
+            <!-- Dots Indicator -->
+            <div id="review-dots" class="flex items-center gap-1.5 overflow-x-auto py-1">
+              <!-- Dots generated by JS -->
+            </div>
+
+            <!-- Navigation Buttons & Counter -->
+            <div class="flex items-center gap-3 shrink-0">
+              <button
+                id="review-prev"
+                type="button"
+                aria-label="Попередній відгук"
+                class="w-10 h-10 rounded-xl border flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95 bg-surface"
+                style="border-color: var(--color-border); color: var(--color-text-main);"
+              >
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+              </button>
+              <span id="review-counter" class="text-sm font-semibold min-w-[3rem] text-center" style="color: var(--color-text-main);">1 / 9</span>
+              <button
+                id="review-next"
+                type="button"
+                aria-label="Наступний відгук"
+                class="w-10 h-10 rounded-xl border flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95 bg-surface"
+                style="border-color: var(--color-border); color: var(--color-text-main);"
+              >
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 6: Відповіді на питання (id="faq")
+         ========================================================================= -->
+    <section 
+      id="faq" 
+      class="py-14 sm:py-20 bg-transparent scroll-mt-14 transition-colors"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div 
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[var(--color-border)]"
+            style="background-color: var(--color-primary-soft); color: var(--color-primary);"
+          >
+            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+            <span>Допомога та розвіювання сумнівів</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+            Відповіді на запитання
+          </h2>
+          <p class="mt-2 text-base sm:text-lg" style="color: var(--color-text-muted);">
+            Усе, що варто знати перед приєднанням до клубу.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Як правильно визначити свій рівень англійської перед участю?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Не хвилюйся! Напиши Ользі в директ: вона проведе коротку дружню бесіду на 5-10 хвилин перед першою зустріччю, щоб підтвердити, що тобі буде комфортно в групі.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Де проходять зустрічі?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Зустрічі проходять онлайн у Zoom. Тривалість кожної зустрічі 90 хвилин у теплій атмосфері з камерами.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Як саме визначається час і день зустрічі?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Після того як ти напишеш «КЛУБ» у Телеграм, Ольга додасть тебе в закритий канал, де методом спільного голосування обирається найзручніший слот для всіх учасників.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Чи можу я спробувати лише одну зустріч?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Звісно! Для цього передбачено разове відвідування за 300 грн. Ти познайомишся з групою та форматом, а далі вирішиш щодо щотижневої участі.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Що робити, якщо я боятимуся говорити або запнуся під час зустрічі?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Напиши Ользі в Telegram («КЛУБ»). Вона поставить кілька легких запитань та допоможе обрати ідеальну за темпом та рівнем групу, де тобі буде комфортно.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Що відбувається, якщо я пропущу заняття через роботу чи справи?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Ми розуміємо насичений графік дорослих. Якщо ти попередиш викладача щонайменше за 12 годин до початку, твоє заняття не згорає: можна відпрацювати його в іншій групі того самого рівня протягом дії абонемента.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Чи потрібно щось читати або готувати до зустрічі заздалегідь?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">До розмовного клубу не треба ніякої підготовки, усі матеріали готую я. Працюємо з ними під час зустрічі. Тобі не потрібно заздалегідь читати тексти, дивитися відео, готувати виступ або вчити список слів, домашнього завдання немає. Головне приходити й практикуватися!</p>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Скільки людей у групі і чи вистачить мені часу поговорити?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Зустрічаємося раз на тиждень на 90 хвилин у групах від 6-8 (максимум 10) учасників. Спілкуємося в парах і невеликих групах у сесійних залах Zoom, так у кожного є можливість висловитися, поставити запитання й відповісти на питання співрозмовника. 90 хвилин, щоб мати достатньо часу висловити свою думку і послухати інших.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="rounded-2xl border bg-surface shadow-warm-sm overflow-hidden" style="border-color: var(--color-border);">
+            <button class="faq-question w-full p-6 text-left font-bold text-lg flex items-center justify-between gap-4 cursor-pointer hover-overlay-subtle">
+              <span style="color: var(--color-text-main);">Як проходить оплата занять та чи є безпечні способи розрахунку?</span>
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 shrink-0 transition-transform duration-300" style="color: var(--color-primary);"></i>
+            </button>
+            <div class="faq-content px-6 overflow-hidden transition-all duration-300 max-h-0" style="color: var(--color-text-muted);">
+              <p class="pb-6">Оплата здійснюється офіційно на розрахунковий рахунок ФОП (IBAN або карткою онлайн). Ти отримуєш чек та підтвердження. Доступні разове відвідування (300 грн) та пакет із чотирьох зустрічей (1200 грн).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+    <!-- =========================================================================
+         БЛОК 7: Контакти (id="contacts")
+         ========================================================================= -->
+    <section id="contacts" class="py-14 sm:py-20 scroll-mt-14 transition-colors shadow-xs" style="background-color: var(--color-surface-glass);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <div 
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-[var(--color-border)]"
+          style="background-color: var(--color-primary-soft); color: var(--color-primary);"
+        >
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Завжди на зв'язку</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-text-main);">
+          Контакти та соціальні мережі
+        </h2>
+        <p class="text-base sm:text-lg" style="color: var(--color-text-muted);">
+          Маєте питання чи хочете особисто поспілкуватися перед стартом? Напишіть у зручний месенджер або підпишіться на мої канали з корисними матеріалами.
+        </p>
+      </div>
+
+      <!-- Steps Sub-header -->
+      <div class="text-center max-w-2xl mx-auto space-y-3 pt-4">
+        <div 
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-[var(--color-border)]"
+          style="background-color: var(--color-secondary-soft); color: var(--color-secondary);"
+        >
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Простий старт</span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight" style="color: var(--color-text-main);">
+          Як приєднатися:
+        </h3>
+        <p class="text-sm sm:text-base font-normal" style="color: var(--color-text-muted);">
+          Усього 2 прості та зрозумілі кроки, щоб потрапити на розмовну зустріч
+        </p>
+      </div>
+
+      <!-- Two Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Step 1 Card -->
+        <div class="p-6 sm:p-8 rounded-3xl border shadow-warm-sm flex flex-col justify-between space-y-6" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-on-primary font-bold text-lg shadow-xs" style="background-color: var(--color-primary);">
+              1
+            </div>
+            <h4 class="text-xl font-bold" style="color: var(--color-text-main);">
+              Пиши мені у дірект «КЛУБ»
+            </h4>
+            <p class="text-base leading-relaxed" style="color: var(--color-text-muted);">
+              Натискай на кнопку нижче та пиши Ользі у Telegram одне слово «КЛУБ».
+            </p>
+          </div>
+
+          <div class="pt-4 border-t" style="border-color: var(--color-border);">
+            <a
+              href="https://t.me/Olga_Boxy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3.5 px-4 rounded-xl font-semibold text-on-primary shadow-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.01] cursor-pointer"
+              style="background-color: var(--color-telegram);"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.119.098.152.228.165.32.016.108.032.352.012.545z"/></svg>
+              <span>Написати «КЛУБ» в Telegram</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 2 Card -->
+        <div class="p-6 sm:p-8 rounded-3xl border shadow-warm-sm flex flex-col justify-between space-y-6" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-on-primary font-bold text-lg shadow-xs" style="background-color: var(--color-secondary);">
+              2
+            </div>
+            <h4 class="text-xl font-bold" style="color: var(--color-text-main);">
+              Спільне голосування за час
+            </h4>
+            <p class="text-base leading-relaxed" style="color: var(--color-text-muted);">
+              Додам тебе у Телеграм канал, де методом голосування оберемо час і дату зустрічі, яка всіх влаштовує
+            </p>
+          </div>
+
+          <div class="pt-4 border-t flex items-center gap-2 text-sm font-semibold" style="border-color: var(--color-border); color: var(--color-success-teal);">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>Зручний день і час для всієї групи</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Brand & Socials Card -->
+      <div class="p-6 sm:p-8 rounded-3xl border shadow-warm-sm flex flex-col md:flex-row items-center justify-between gap-6" style="background-color: var(--color-bg-start); border-color: var(--color-border);">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary font-bold text-lg shadow-xs shrink-0" style="background-color: var(--color-primary);">
+            OV
+          </div>
+          <div>
+            <h4 class="text-lg font-bold" style="color: var(--color-text-main);">Speaking Club</h4>
+            <p class="text-sm" style="color: var(--color-text-muted);">online</p>
+          </div>
+        </div>
+
+        <div class="flex items-center flex-wrap justify-center gap-3">
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@olgavoropay9503/featured" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-tooltip="YouTube" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-youtube);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="https://t.me/Olga_Boxy" target="_blank" rel="noopener noreferrer" aria-label="Telegram" data-tooltip="Telegram" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-telegram);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.119.098.152.228.165.32.016.108.032.352.012.545z"/></svg>
+          </a>
+          <!-- Viber -->
+          <a href="viber://chat?number=%2B380964184346" aria-label="Viber" data-tooltip="Viber" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-viber);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.81 16.03c-.92-.68-2.11-1.2-3.14-.52-.39.26-.78.73-1.3 1.11-.32.24-.76.19-1.06-.11-1.29-1.31-2.43-2.73-3.32-4.34-.2-.36-.07-.8.26-1.04.38-.28.79-.61 1.05-1.01.62-.96.22-2.14-.6-2.97l-.63-.63c-.88-.88-2.31-.88-3.19 0l-.82.82c-1.39 1.39-1.78 3.51-1.05 5.32 1.44 3.56 4.31 6.43 7.87 7.87 1.81.73 3.93.34 5.32-1.05l.82-.82c.88-.88.88-2.31 0-3.19l-.63-.63zM12 0C5.37 0 0 5.37 0 12c0 2.12.55 4.2 1.6 6.01L0 24l6.19-1.62C7.96 23.36 10 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/+380964184346" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" data-tooltip="WhatsApp" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-whatsapp);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/olgateacher_english/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-tooltip="Instagram" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-instagram);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/olga.boxy" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-tooltip="Facebook" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-facebook);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.373 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.581 9 4.75V8z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/olga-voropai-5a87a3241?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BerzWVseySZiX8QVRm%2BNXCg%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-tooltip="LinkedIn" class="social-link w-11 h-11 rounded-2xl border bg-surface shadow-xs flex items-center justify-center transition-transform hover:scale-110" style="border-color: var(--color-border); color: var(--color-linkedin);">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <hr class="w-full border-t border-[var(--color-border)] m-0">
+
+  <!-- Footer: Copyright -->
+  <footer class="py-6 sm:py-8 bg-transparent transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-4" style="color: var(--color-text-muted);">
+      <p>© 2026 Speaking Club з Ольгою Воропай. Усі права захищені.</p>
+      <div>
+        Created by <a href="https://webdevkorobka.github.io/" target="_blank" rel="noopener noreferrer" class="hover:underline font-semibold" style="color: var(--color-primary);">WebDevKorobka</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button
+    id="scroll-to-top"
+    type="button"
+    aria-label="Піднятися нагору"
+    class="fixed bottom-6 right-6 w-12 h-12 rounded-full text-on-primary shadow-warm-md flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-50 cursor-pointer hover:scale-110"
+    style="background-color: var(--color-primary);"
+  >
+    <i data-lucide="arrow-up" class="w-6 h-6"></i>
+  </button>
+
+  <!-- Script Initialization -->
+  <script src="vendor/lucide-1.72.0.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
